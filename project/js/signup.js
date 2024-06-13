@@ -1,5 +1,6 @@
 import getValue from "../components/helper.js";
-
+import navbar from "../components/navbar.js";
+document.getElementById("navbar").innerHTML = navbar()
 
 const handleData = (e) => {
     e.preventDefault();
@@ -12,6 +13,7 @@ const handleData = (e) => {
 
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("isLogin", true);
+    window.location.href="/project/index.html"
 
 }
 
