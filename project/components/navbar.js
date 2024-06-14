@@ -1,7 +1,7 @@
 const navbar = (login = "login", signup = "signup") => {
   return `<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="../index.html">Javascript</a>
+      <a class="navbar-brand" href="/project/index.html">Javascript</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -19,27 +19,27 @@ const navbar = (login = "login", signup = "signup") => {
             <a
               class="nav-link active"
               aria-current="page"
-              href="../index.html"
+              href="/project/index.html"
               >Home</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/Products.html">Products</a>
+            <a class="nav-link" href="/project/pages/Products.html">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/AddProduct.html"
+            <a class="nav-link" href="/project/pages/AddProduct.html"
               >Add Product</a
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/Cart.html">Cart</a>
+            <a class="nav-link" href="/project/pages/Cart.html">Cart</a>
           </li>
           <li class="nav-item" >
-            <a class="nav-link" href="../pages/Login.html">${login}</a>
+            <a class="nav-link" href="/project/pages/Login.html">${login}</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="../pages/Signup.html">${signup}</a>
+            <a class="nav-link" href="/project/pages/Signup.html">${signup}</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
