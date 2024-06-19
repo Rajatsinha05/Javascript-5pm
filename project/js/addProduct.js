@@ -15,15 +15,18 @@ else {
 let products = JSON.parse(localStorage.getItem("products")) || []
 const handleData = (e) => {
     e.preventDefault();
+    let n = products.length - 1
     let product = {
         title: getValue("title"),
         price: getValue("price"),
         img: getValue("img"),
-        category: getValue("category")
+        category: getValue("category"),
+        id: products.length == 0 ? 1 : products[n].id + 1
     }
     products.push(product)
     localStorage.setItem("products", JSON.stringify(products))
 }
+
 
 
 

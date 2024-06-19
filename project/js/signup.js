@@ -17,6 +17,4 @@ const handleData = (e) => {
 
 }
 
-
-
 document.getElementById("userData").addEventListener("submit", handleData)

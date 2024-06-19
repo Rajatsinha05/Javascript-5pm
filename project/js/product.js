@@ -1,7 +1,32 @@
-import { createTag } from "../components/helper.js";
+import getValue, { createTag } from "../components/helper.js";
 import navbar from "../components/navbar.js";
 document.getElementById("navbar").innerHTML = navbar();
 let products = JSON.parse(localStorage.getItem("products")) || [];
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || []
+
+
+
+
+const isExists = (id) => {
+    let temp = cart.filter((ele) => ele.id == id)
+    return temp.length > 0 ? true : false
+}
+
+const handleCart = (ele) => {
+   if(isExists(ele.id)){
+
+   }
+   else{
+
+   }
+}
+
+
+
+
+
 
 const Mapper = (data) => {
     document.getElementById("productList").innerHTML = "";
@@ -12,6 +37,7 @@ const Mapper = (data) => {
         let category = createTag("p", item.category);
         let div = document.createElement("div");
         let btn = createTag("button", "Buy");
+        btn.addEventListener("click", () => handleCart(item));
         div.append(img, title, price, category, btn);
         document.getElementById("productList").append(div);
     });
@@ -37,6 +63,39 @@ const handleCategory = (category) => {
     let temp = products.filter((ele) => ele.category == category)
     Mapper(temp);
 }
+
+
+// search  for products
+
+const handleSearch = (value) => {
+    let temp = products.filter((ele) => ele.title.includes(value));
+    Mapper(temp);
+}
+const handleSearchData = (e) => {
+    e.preventDefault();
+    let searchValue = getValue("searchValue");
+    handleSearch(searchValue)
+
+}
+
+
+// keypress events
+const handleKeypress = (e) => {
+    //  enter keypress
+    //    if(e.key=="Enter") {
+    //     let searchValue = getValue("searchValue");
+    //     handleSearch(searchValue)
+    //    }
+    //    live keypress events
+    let searchValue = getValue("searchValue");
+    handleSearch(searchValue)
+}
+
+// enter 
+document.getElementById("searchValue").addEventListener("keypress", handleKeypress)
+
+document.getElementById("search").addEventListener("submit", handleSearchData)
+
 
 document
     .getElementById("lth")
