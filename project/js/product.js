@@ -6,26 +6,30 @@ let products = JSON.parse(localStorage.getItem("products")) || [];
 
 let cart = JSON.parse(localStorage.getItem("cart")) || []
 
-
-
-
 const isExists = (id) => {
     let temp = cart.filter((ele) => ele.id == id)
     return temp.length > 0 ? true : false
 }
-
 const handleCart = (ele) => {
-   if(isExists(ele.id)){
+    if (isExists(ele.id)) {
+        cart.map((item, index) => {
+            if (item.id == ele.id) {
+                cart[index].qty += 1
 
-   }
-   else{
+            }
+        })
+        alert("qty added to cart")
+    }
+    else {
+        // ele.qty=1
+        cart.push({ ...ele, qty: 1 })
+        // cart.push(ele)
+        alert("added  to the cart")
+    }
 
-   }
+    localStorage.setItem("cart", JSON.stringify(cart))
+
 }
-
-
-
-
 
 
 const Mapper = (data) => {
