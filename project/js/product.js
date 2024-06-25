@@ -3,9 +3,10 @@ import navbar from "../components/navbar.js";
 document.getElementById("navbar").innerHTML = navbar();
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
-
 let cart = JSON.parse(localStorage.getItem("cart")) || []
 
+ document.getElementById("count").innerHTML=cart.length
+ 
 const isExists = (id) => {
     let temp = cart.filter((ele) => ele.id == id)
     return temp.length > 0 ? true : false
@@ -25,6 +26,7 @@ const handleCart = (ele) => {
         cart.push({ ...ele, qty: 1 })
         // cart.push(ele)
         alert("added  to the cart")
+        document.getElementById("count").innerHTML=cart.length
     }
 
     localStorage.setItem("cart", JSON.stringify(cart))

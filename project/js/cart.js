@@ -11,12 +11,42 @@ if (isLogin) {
 else {
     window.location.href = "/project/pages/Login.html"
 }
+document.getElementById("count").innerHTML=cart.length
+// delete
+const handleDelete = (index) => {
+    cart.splice(index, 1)
+    document.getElementById("count").innerHTML=cart.length
+    Mapper(cart)
+    localStorage.setItem("cart", JSON.stringify(cart))
+}
+
+const handleQty = (index, opr) => {
+
+    if (opr == "+") {
+        cart[index].qty += 1
+    }
+    else {
+
+        if (cart[index].qty > 1) {
+            cart[index].qty -= 1
+        }
+        else {
+            // handleDelete(index)
+            alert("qty should be greater than 1")
+        }
+    }
+
+    Mapper(cart)
+    localStorage.setItem("cart", JSON.stringify(cart))
+
+
+}
 
 
 
 const Mapper = (cart) => {
     document.getElementById("list").innerHTML = "Loading..."
-    cart.map((item) => {
+    cart.map((item, i) => {
         let td1 = document.createElement("td")
         let img = createTag("img", item.img)
         td1.append(img)
@@ -28,10 +58,14 @@ const Mapper = (cart) => {
         let btn1 = createTag("button", "-")
         let btn2 = createTag("button", item.qty)
         let btn3 = createTag("button", "+")
+
+        btn1.addEventListener("click", () => handleQty(i, "-"))
+        btn3.addEventListener("click", () => handleQty(i, "+"))
         td5.append(btn1, btn2, btn3)
         let td6 = createTag("td", item.price * item.qty)
         let td7 = document.createElement("td")
         let btn = createTag("button", "remove")
+        btn.addEventListener("click", () => handleDelete(i))
         td7.append(btn)
         let tr = document.createElement("tr")
         tr.append(td1, td2, td3, td4, td5, td6, td7)

@@ -1,4 +1,4 @@
-const navbar = (login = "login", signup = "signup") => {
+const navbar = (login = "login", signup = "signup", productsCount) => {
   return `<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="/project/index.html">Javascript</a>
@@ -32,7 +32,8 @@ const navbar = (login = "login", signup = "signup") => {
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/project/pages/Cart.html">Cart</a>
+            <a class="nav-link" href="/project/pages/Cart.html">Cart 
+             <span class="badge text-bg-secondary" id="count"></span></a>
           </li>
           <li class="nav-item" >
             <a class="nav-link" href="/project/pages/Login.html">${login}</a>
